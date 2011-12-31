@@ -48,20 +48,49 @@
 #import "HeaderView.h"
 
 #import "MessageModel.h"
+#import "Clothing.h"
+#import "SBJson.h"
 
 @implementation WallViewController
 
 @synthesize viewControlerStack,gestureRecognizer,wallTitle;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil 
+{
    
-    if ( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+    if ( self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) 
+    {
 		[self.view setBackgroundColor:[UIColor whiteColor]];
 		isInFullScreenMode = FALSE;
 		
 		messageArrayCollection = [[NSMutableArray alloc] init];
+        
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        
+        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=Clossit&results=10"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+       
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+        
+        NSArray *items = [parser objectWithString:json_string error:nil];
+        int count = 0;
+        for(NSDictionary *item in items)
+        {
+            MessageModel* messageModel = [[MessageModel alloc] init];
+            Clothing* a = [[Clothing alloc] initFromDictionary:[item objectForKey:@"clothing"]];
+            messageModel.messageID = count++;
+            messageModel.userName = [a Name];
+            messageModel.userImage = [a Image];
+            messageModel.createdAt = @"06/07/2011 at 01:00 AM";
+            messageModel.content = [a Description];
+            [messageArrayCollection addObject:messageModel];
+            [messageModel release];
+            [a release];
+        }
 		
-		for (int i = 1; i <= 18; i++) {
+		/*for (int i = 1; i <= 18; i++) //to fill 18 blocks of messages.
+        {
 			
 			MessageModel* messageModel1 = [[MessageModel alloc] init];
 			messageModel1.messageID= i;
@@ -72,7 +101,7 @@
 			
 			[messageArrayCollection addObject:messageModel1];
 			[messageModel1 release];
-		}
+		}*/
 		
 		[self buildPages:messageArrayCollection];
 		

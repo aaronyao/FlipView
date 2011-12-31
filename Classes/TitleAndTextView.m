@@ -80,7 +80,7 @@
 	contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
 	userImageView = [[UIImageView alloc] init];
-	userImageView.image = [UIImage imageNamed:messageModel.userImage];
+	userImageView.image = [UIImage imageWithContentsOfFile:messageModel.userImage];
 	[userImageView setFrame:CGRectMake(10, 10, 50, 50)];
 	[contentView addSubview:userImageView];
 

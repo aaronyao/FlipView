@@ -47,7 +47,7 @@
 		userImageView = [[UIImageView alloc] init];
 		[userImageView setBackgroundColor:[UIColor clearColor]];
 		[userImageView setFrame:CGRectMake(10, 10, 130, 130)];
-		[userImageView setImage:[UIImage imageNamed:@"missing-people.png"]];
+		[userImageView setImage:[UIImage imageWithContentsOfFile:messageModel.userImage]];
 		[contentView addSubview:userImageView];
 		
 		userNameLabel = [[UILabel alloc] init];
