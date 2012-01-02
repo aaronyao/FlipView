@@ -48,7 +48,7 @@
 		clothingImageView = [[UIImageView alloc] init];
 		[clothingImageView setBackgroundColor:[UIColor clearColor]];
 		[clothingImageView setFrame:CGRectMake(10, 10, 130, 130)];
-		[clothingImageView setImage:[UIImage imageWithContentsOfFile:clothingModel.clothing.Image]];
+		[clothingImageView setImage:[UIImage imageWithContentsOfFile:[clothingModel.clothing Image:50 width:50]]];
 		[contentView addSubview:clothingImageView];
 		
 		clothingNameLabel = [[UILabel alloc] init];

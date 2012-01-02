@@ -19,7 +19,7 @@
 - (NSString*) Name;
 - (NSString*) URL;
 - (NSString*) Description;
-- (NSString *) Image: (NSString*)height width:(NSString*)width;
+- (NSString *) Image: (int)height width:(int)width;
 - (NSString*) Id;
 - (NSString*) Store;
 - (NSString*) Gender;

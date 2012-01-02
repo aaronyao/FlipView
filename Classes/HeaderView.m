@@ -48,7 +48,7 @@
         wallTitleText = @"aHh";
     
 	UIImageView* userImageView = [[UIImageView alloc] init];
-    [userImageView setImage:[UIImage imageWithContentsOfFile:[[Session getUser] Image]]];
+    [userImageView setImage:[UIImage imageWithContentsOfFile:[[Session getUser] Image:50 width:50]]];
 	[userImageView setFrame:CGRectMake(0, 0, 50, 48)];
 	[self addSubview:userImageView];
 	

@@ -97,20 +97,19 @@
 	
 	if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
 		if (view1 != nil) {
-			[view1 setFrame:CGRectMake(768 /2, 50, 768 /2, (954/2) - 10)];			
-			[view2 setFrame:CGRectMake(768 /2,(954/2) + 40, 768 /2, (954/2) - 10)];
+			[view1 setFrame:CGRectMake(0, 40, 768/2, 984/2)];			
+			[view2 setFrame:CGRectMake(768/2, 40, 768/2, 984/2)];
 			
-			[view3 setFrame:CGRectMake(0, 50, 768 /2, (954/2) -10)];
-			[view4 setFrame:CGRectMake(0,((954/2) +40), 768 /2, (954/2) - 10)];
+			[view3 setFrame:CGRectMake(0, 984/2+40, 768/2, 984/2)];
+			[view4 setFrame:CGRectMake(768/2, 984/2+40, 768 /2, 984/2)];
 			
 		}
 	}else {
-		if (view1 != nil) {		
-			[view1 setFrame:CGRectMake(0, 50, (1024 /2), 698 /2 -10)];
-			[view2 setFrame:CGRectMake((1024 /2), 50, (1024 /2), 698/2 -10)];
-			
-			[view3 setFrame:CGRectMake(0, 698 /2 + 40, 1024 /2, 698/2 -10)];
-			[view4 setFrame:CGRectMake(1024 /2, 698 /2 + 40, 1024 /2, 698/2 -10)];
+		if (view1 != nil) {	
+			[view1 setFrame:CGRectMake(0, 40, 1024/2, 728/2)];	
+			[view2 setFrame:CGRectMake(0, 40+728/2, 1024/2, 728/2)];	
+			[view3 setFrame:CGRectMake(1024/2, 40, 1024/2, 728/2)];	
+			[view4 setFrame:CGRectMake(1024/2, 40+728/2, 1024/2, 728/2)];			
 		}
 	}
 	
