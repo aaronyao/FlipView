@@ -43,7 +43,6 @@
 		
 		UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
 		[self addGestureRecognizer:tapRecognizer];
-		[tapRecognizer release];
 
 	}
 	return self;
@@ -124,15 +123,6 @@
 		[super setFrame:rect];
 }
 
-- (void) dealloc{
-	[messageModel release];
-	[contentView release];
-	[userImageView release];
-	[userNameLabel release];
-	[timeStampLabel release];
-	[messageLabel release];
-	[super dealloc];
-}
 
 
 @end

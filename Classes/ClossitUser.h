@@ -26,6 +26,6 @@
 
 -(NSString*)md5:(NSString*)input;
 
-@property (retain) NSDictionary* JSON;
-@property (retain) NSString* imgPath;
+@property (nonatomic, strong) NSDictionary* JSON;
+@property (strong) NSString* imgPath;
 @end

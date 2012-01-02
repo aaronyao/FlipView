@@ -42,16 +42,18 @@
 
 -(void) setWallTitleText:(NSString *)wallTitle 
 {
-	wallTitleText = wallTitle;
+    if([wallTitle length] != 0)
+        wallTitleText = wallTitle;
+    else
+        wallTitleText = @"aHh";
     
 	UIImageView* userImageView = [[UIImageView alloc] init];
-    [userImageView setImage:[UIImage imageWithContentsOfFile:[getUser() Image]]];
+    [userImageView setImage:[UIImage imageWithContentsOfFile:[[Session getUser] Image]]];
 	[userImageView setFrame:CGRectMake(10, 1, 50, 48)];
 	[self addSubview:userImageView];
-	[userImageView release];
 	
 	wallNameLabel = [[UILabel alloc] init];
-	[wallNameLabel setText:wallTitle];
+	[wallNameLabel setText:wallTitleText];
 	wallNameLabel.font =[UIFont fontWithName:@"Helvetica" size:30];
 	[wallNameLabel setTextColor:RGBCOLOR(166,166,166)];
 	wallNameLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -61,10 +63,5 @@
 	
 }
 
--(void) dealloc {
-	[wallNameLabel release];
-	[wallTitleText release];
-	[super dealloc];
-}
 
 @end

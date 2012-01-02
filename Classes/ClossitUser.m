@@ -18,9 +18,9 @@
 
 -(ClossitUser*) initFromString:(NSString *)json
 {
-    if(self==[super init])
+    if(self=[super init])
     {
-        self.JSON = [json JSONValue];
+        self.JSON = [[json JSONValue] copy];
     }
     
     return self;
@@ -28,9 +28,9 @@
 
 -(ClossitUser*) initFromDictionary:(NSDictionary *)json
 {
-    if(self == [super init])
+    if(self = [super init])
     {
-        JSON = json;
+        JSON = [json copy];
     }
     return self;
 }
@@ -100,6 +100,7 @@
     return  output;
     
 }
+
 
 
 @end

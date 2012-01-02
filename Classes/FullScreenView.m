@@ -82,11 +82,10 @@
 		[scrollView addSubview:messageLabel];
 		
 		
-		closeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		UIImageView* closeImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close-popup.png"]];
 		[closeImage setFrame:CGRectMake(6, 6, 17, 17)];
 		[closeButton addSubview:closeImage];
-		[closeImage release];
 		[closeButton addTarget:self action:@selector(closeFullScreenView:) forControlEvents:UIControlEventTouchUpInside];
 		[closeButton sizeToFit];
 		closeButton.alpha = 0;
@@ -166,21 +165,13 @@
 
 
 -(void) dealloc {
-	[closeButton release];
 	closeButton=nil;
-	[userImageView release];
 	userImageView=nil;
-	[userNameLabel release];
 	userNameLabel=nil;
-	[timeStampLabel release];
 	timeStampLabel=nil;
-	[messageLabel release];
 	messageLabel=nil;
-	[scrollView release];
 	scrollView=nil;
-	[contentView release];
 	contentView=nil;
-	[super dealloc];
 }
 
 @end

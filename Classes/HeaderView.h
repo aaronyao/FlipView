@@ -37,7 +37,7 @@
 	UILabel* wallNameLabel;
 }
 @property (nonatomic,readonly) UIInterfaceOrientation currrentInterfaceOrientation;
-@property (nonatomic,retain) NSString* wallTitleText;
+@property (nonatomic,strong) NSString* wallTitleText;
 -(void)rotate:(UIInterfaceOrientation)interfaceOrientation animation:(BOOL)animation;
 
 @end

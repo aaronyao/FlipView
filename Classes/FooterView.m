@@ -140,7 +140,6 @@
 			[view removeFromSuperview];
 		}
 		[previousView removeFromSuperview];
-		[previousView release];
 	}
 	
 	previousView = [[UIView alloc] init];
@@ -152,12 +151,10 @@
 	[labelPrevious sizeToFit];
 	[labelPrevious setTag:1];
 	[previousView addSubview:labelPrevious];
-	[labelPrevious release];
 	
 	UIImageView* prevImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"previous.png"]];
 	[prevImage setTag:2];
 	[previousView addSubview:prevImage];
-	[prevImage release];
 	
 	[previousView setUserInteractionEnabled:FALSE];
 	
@@ -172,7 +169,6 @@
 			[view removeFromSuperview];
 		}
 		[nextView removeFromSuperview];
-		[nextView release];
 	}
 	
 	nextView = [[UIView alloc] init];
@@ -184,12 +180,10 @@
 	[labelNext sizeToFit];
 	[labelNext setTag:1];
 	[nextView addSubview:labelNext];
-	[labelNext release];
 	
 	UIImageView* nextImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"next.png"]];
 	[nextImage setTag:2];
 	[nextView addSubview:nextImage];
-	[nextImage release];
 	
 	[nextView setUserInteractionEnabled:FALSE];
 	
@@ -204,7 +198,6 @@
 			[view removeFromSuperview];
 		}
 		[barButtonsView removeFromSuperview];
-		[barButtonsView release];
 	}	
 	
 	barButtonsView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20)];
@@ -229,7 +222,6 @@
 			//[boxButton setBackgroundColor:[UIColor redColor]];
 		}
 		[barButtonsView addSubview:boxButton];
-		[boxButton release];
 		left+=30;
 	}
 	width +=10;
@@ -320,11 +312,5 @@
 		[barButtonsView setContentOffset:CGPointMake(450 * (currentScrollNumber-1), barButtonsView.frame.origin.y) animated:YES];
 }
 
--(void) dealloc {
-	[nextView release];
-	[previousView release];
-	[barButtonsView release];
-	[super dealloc];
-}
 
 @end

@@ -37,7 +37,7 @@
 @synthesize view1;
 
 -(void)initalizeViews:(NSDictionary*)viewCollectionDictonary{
-		view1 = [(UIViewExtention*)[viewCollectionDictonary objectForKey:@"view1"] retain];
+		view1 = (UIViewExtention*)[viewCollectionDictonary objectForKey:@"view1"];
 		
 		self.isFullScreen= FALSE;
 		view1.isFullScreen = FALSE;
@@ -116,9 +116,5 @@
 	[view1 setBackgroundColor:[UIColor colorWithRed:213.0f/255.0f green:213.0f/255.0f blue:213.0f/255.0f alpha:0.9]];
 }
 
-- (void) dealloc{
-	[view1 release];
-	[super dealloc];
-}
 
 @end

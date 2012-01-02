@@ -17,9 +17,9 @@
 
 -(Clothing *) initFromString:(NSString *)json
 {
-    if(self==[super init])
+    if(self = [super init])
     {
-        self.JSON = [json JSONValue];
+        self.JSON = [[json JSONValue] copy];
     }
     
     return self;
@@ -27,9 +27,9 @@
 
 -(Clothing*) initFromDictionary:(NSDictionary *)json
 {
-    if(self == [super init])
+    if(self = [super init])
     {
-        self.JSON = json;
+        self.JSON = [json copy];
     }
     
     return self;
@@ -109,10 +109,5 @@
    
 }
 
-- (void) dealloc 
-{
-	[JSON release];
-	[super dealloc];
-}
 
 @end

@@ -37,8 +37,8 @@ typedef enum {
 	
 	NSInteger pageDifference;
 	
-	UIView *currentView;
-	UIView *newView;
+	UIView *__weak currentView;
+	UIView *__weak theNewView;
 	
 	// shadows
 	CALayer *frontLayerShadow;
@@ -60,7 +60,7 @@ typedef enum {
 	float endFlipAngle;
 	float currentAngle;
 	
-	BOOL setNewViewOnCompletion;
+	BOOL settheNewViewOnCompletion;
 	BOOL animating;
 	
 	BOOL disabled;
@@ -70,13 +70,13 @@ typedef enum {
 	
 }
 
-@property (nonatomic,retain) NSObject <AFKPageFlipperDataSource> *dataSource;
+@property (nonatomic,strong) NSObject <AFKPageFlipperDataSource> *dataSource;
 @property (nonatomic,assign) NSInteger currentPage;
 @property (nonatomic,assign) NSInteger numberOfPages;
 @property (nonatomic,assign) NSInteger pageDifference;
 @property (nonatomic,assign) BOOL disabled;
-@property (nonatomic,assign) UIView *currentView;
-@property (nonatomic,assign) UIView *newView;
+@property (nonatomic,weak) UIView *currentView;
+@property (nonatomic,weak) UIView *theNewView;
 @property (nonatomic,readonly) BOOL animating;
 
 

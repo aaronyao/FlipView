@@ -36,7 +36,7 @@
 @interface Layout1 : LayoutViewExtention {
 	UIViewExtention* view1;
 }
-@property (nonatomic,retain) UIViewExtention* view1;
+@property (nonatomic,strong) UIViewExtention* view1;
 
 
 @end

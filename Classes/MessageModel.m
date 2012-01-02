@@ -66,13 +66,5 @@
     return self;
 }
 
-- (void) dealloc 
-{
-	[content release];
-	[createdAt release];
-	[userName release];
-	[userImage release];
-	[super dealloc];
-}
 
 @end

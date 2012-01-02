@@ -18,7 +18,7 @@
 -(Me*)initWithLoginData:(NSString*) email withPw:(NSString*)pw;
 
 
-@property (retain) NSString* apiKey;
+@property (strong) NSString* apiKey;
 
 
 @end

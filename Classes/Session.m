@@ -9,3 +9,15 @@
 #import "Session.h"
 
 
+@implementation Session
+
+static Me* _me = nil;
+
++(Me*) getUser
+{
+    if(_me == nil)
+        _me = [[Me alloc] initWithLoginData:@"taimur@clossit.com" withPw:@"Engin33r"];
+    return _me;
+}
+
+@end

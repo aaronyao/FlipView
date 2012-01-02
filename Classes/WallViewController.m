@@ -69,9 +69,6 @@
         
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         
-        //log me in using Session.user here.
-        
-        
         NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=Clossit"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
        
@@ -89,8 +86,6 @@
             messageModel.messageID = count++;
             messageModel.createdAt = [item objectForKey:@"added"];
             [messageArrayCollection addObject:messageModel];
-            [messageModel release];
-            [a release];
         }
 		
 		[self buildPages:messageArrayCollection];
@@ -101,11 +96,13 @@
 		[self.view addSubview:flipper];
 		
     }
+    
     return self;
 }
 
 - (int)getRandomNumber:(int)from to:(int)to {
-	return (int)from + random() % (to-from+1);
+	//return (int)from + random() % (to-from+1);
+    return to;
 }
 
 
@@ -176,7 +173,7 @@
 		
 		NSArray* messageArray= [messageArrayCollection subarrayWithRange:rangeForView];
 		
-		NSMutableDictionary* viewDictonary = [[[NSMutableDictionary alloc] init] autorelease];
+		NSMutableDictionary* viewDictonary = [[NSMutableDictionary alloc] init];
 		TitleAndTextView* view1forLayout;
 		TitleAndTextView* view2forLayout;
 		TitleAndTextView* view3forLayout;
@@ -184,29 +181,29 @@
 		TitleAndTextView* view5forLayout;
 		for (int i = 0; i < [messageArray count]; i++) {
 			if (i == 0) {
-				view1forLayout = [[[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]] autorelease];
+				view1forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view1forLayout forKey:@"view1"];
 			}
 			if (i == 1) {
-				view2forLayout = [[[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]] autorelease];
+				view2forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view2forLayout forKey:@"view2"];
 			}
 			if (i == 2) {
-				view3forLayout = [[[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]] autorelease];
+				view3forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view3forLayout forKey:@"view3"];
 			}
 			if (i == 3) {
-				view4forLayout = [[[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]] autorelease];
+				view4forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view4forLayout forKey:@"view4"];
 			}
 			if (i == 4) {
-				view5forLayout = [[[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]] autorelease];
+				view5forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view5forLayout forKey:@"view5"];
 			}
 		}
 		
 		Class class =  NSClassFromString([NSString stringWithFormat:@"Layout%d",layoutNumber]);
-		id layoutObject = [[[class alloc] init] autorelease];
+		id layoutObject = [[class alloc] init];
 		
 		if ([layoutObject isKindOfClass:[LayoutViewExtention class]] ) {
 			
@@ -220,11 +217,10 @@
 			HeaderView* headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, layoutToReturn.frame.size.width, 50)];
 			headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             
-			[headerView setWallTitleText:[getUser() Name]];
+			[headerView setWallTitleText:[[Session getUser] Name]];
 			[headerView setBackgroundColor:[UIColor whiteColor]];
 			[headerView rotate:self.interfaceOrientation animation:NO];
 			[layoutToReturn setHeaderView:headerView];
-			[headerView release];
 			
 			FooterView* footerView = [[FooterView alloc] initWithFrame:CGRectMake(0, layoutToReturn.frame.size.height - 20, layoutToReturn.frame.size.width, 20)];
 			[footerView setBackgroundColor:[UIColor whiteColor]];
@@ -239,7 +235,6 @@
 			[footerView rotate:self.interfaceOrientation animation:YES];
 			
 			[layoutToReturn setFooterView:footerView];
-			[footerView release];
 		}
 	}
 	
@@ -301,11 +296,9 @@
 	if (fullScreenView != nil) {
 		fullScreenBGView.alpha=0;
 		[fullScreenBGView removeFromSuperview];
-		[fullScreenBGView release];
 		
 		fullScreenView.alpha = 0;
 		[fullScreenView removeFromSuperview];
-		[fullScreenView release];
 		fullScreenView = nil;
 		isInFullScreenMode = FALSE;
 	}
@@ -371,7 +364,7 @@
 		}		
 	}else if ([animationID isEqualToString:@"FOOTER"]) {
 		if (context) {
-			((UIView*)context).alpha = 1;
+			((__bridge UIView*)context).alpha = 1;
 		}
 	}else if ([animationID isEqualToString:@"SHOWFULLSCREEN"]) {
 		[fullScreenView showFields];
@@ -430,18 +423,7 @@
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 
-	[messageArrayCollection release];
-	if (fullScreenBGView != nil) {
-		[fullScreenBGView release];
-	}
-	[viewControlerStack release];
-	[gestureRecognizer release];
-	[flipper release];
-	if (fullScreenView != nil) {
-		[fullScreenView release];
-	}
-	[wallTitle release];
-    [super dealloc];
+	//[gestureRecognizer release];
 }
 
 

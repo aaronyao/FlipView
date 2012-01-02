@@ -38,8 +38,8 @@
 @synthesize view2;
 
 -(void)initalizeViews:(NSDictionary*)viewCollectionDictonary{
-		view1 = [(UIViewExtention*)[viewCollectionDictonary objectForKey:@"view1"] retain];
-		view2 = [(UIViewExtention*)[viewCollectionDictonary objectForKey:@"view2"] retain];
+		view1 = (UIViewExtention*)[viewCollectionDictonary objectForKey:@"view1"];
+		view2 = (UIViewExtention*)[viewCollectionDictonary objectForKey:@"view2"];
 		
 		self.isFullScreen= FALSE;
 		view1.isFullScreen = FALSE;
@@ -124,10 +124,5 @@
 
 }
 
-- (void) dealloc{
-	[view1 release];
-	[view2 release];
-	[super dealloc];
-}
 
 @end

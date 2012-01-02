@@ -49,8 +49,8 @@
 -(void)closeFullScreen;
 -(void)buildPages:(NSArray*)messagesArray;
 
-@property (nonatomic, assign) NSMutableArray* viewControlerStack;
-@property (nonatomic, assign) UIGestureRecognizer* gestureRecognizer;
-@property (nonatomic, retain) NSString* wallTitle;
+@property (nonatomic, strong) NSMutableArray* viewControlerStack;
+@property (nonatomic, weak) UIGestureRecognizer* gestureRecognizer;
+@property (nonatomic, strong) NSString* wallTitle;
 
 @end

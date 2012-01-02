@@ -41,11 +41,11 @@
 	UIViewExtention* view4;
 	UIViewExtention* view5;
 }
-@property (nonatomic,retain) UIViewExtention* view1;
-@property (nonatomic,retain) UIViewExtention* view2;
-@property (nonatomic,retain) UIViewExtention* view3;
-@property (nonatomic,retain) UIViewExtention* view4;
-@property (nonatomic,retain) UIViewExtention* view5;
+@property (nonatomic,strong) UIViewExtention* view1;
+@property (nonatomic,strong) UIViewExtention* view2;
+@property (nonatomic,strong) UIViewExtention* view3;
+@property (nonatomic,strong) UIViewExtention* view4;
+@property (nonatomic,strong) UIViewExtention* view5;
 
 
 @end

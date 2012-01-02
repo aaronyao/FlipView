@@ -44,6 +44,6 @@
 - (id) initWithMessageModel:(MessageModel*)messagemodel;
 - (void) initializeFields;
 	
-@property (nonatomic,retain) MessageModel* messageModel;
+@property (nonatomic,strong) MessageModel* messageModel;
 
 @end

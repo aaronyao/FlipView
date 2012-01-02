@@ -14,10 +14,9 @@
 @synthesize apiKey;
 
 
-
 -(Me*) initWithLoginData:(NSString*) email withPw: (NSString*) pw
 {
-    if(self == [super init])
+    if(self = [super init])
     {
     //generate apiKey
     NSLog(@"Me init called.");
@@ -29,9 +28,14 @@
     
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    [self initFromString:json_string];
+    self = [self initFromString:json_string];
     }
     
     return self;
 }
+
+- (void)dealloc {
+    NSLog(@"deallocing me help");
+}
+
 @end

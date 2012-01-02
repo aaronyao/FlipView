@@ -46,8 +46,8 @@
 
 @property (nonatomic,readonly) UIInterfaceOrientation currrentInterfaceOrientation;
 @property (nonatomic,assign) BOOL isFullScreen;
-@property (nonatomic,retain) HeaderView* headerView;
-@property (nonatomic,retain) FooterView* footerView;
+@property (nonatomic,strong) HeaderView* headerView;
+@property (nonatomic,strong) FooterView* footerView;
 
 
 @end

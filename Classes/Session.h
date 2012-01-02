@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Me.h"
 
-Me* User;
 
-Me* getUser()
+@interface Session : NSObject 
 {
-    if(User == Nil)
-        User = [[Me alloc] initWithLoginData:@"taimur@clossit.com" withPw:@"Engin33r"];
-    return User;
+  
 }
+	
++(Me*) getUser;
+
+@end

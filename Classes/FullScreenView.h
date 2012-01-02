@@ -34,7 +34,7 @@
 #import "MessageModel.h"
 
 @interface FullScreenView : UIViewExtention  {
-	MessageModel* messageModel;
+	MessageModel* __weak messageModel;
 	UIView* contentView;
 
 	UIImageView* userImageView;
@@ -42,8 +42,8 @@
 	UILabel* timeStampLabel;
 	UILabel* messageLabel;
 
-	UIViewExtention* viewToOverLap;
-	UIView* fullScreenBG;
+	UIViewExtention* __weak viewToOverLap;
+	UIView* __weak fullScreenBG;
 	UIButton* closeButton;
 	
 	UIScrollView* scrollView;
@@ -52,7 +52,7 @@
 -(id)initWithModel:(MessageModel*)model;
 -(void)showFields;
 
-@property (nonatomic,assign) MessageModel* messageModel;
-@property (nonatomic,assign) UIViewExtention* viewToOverLap;
-@property (nonatomic,assign) UIView* fullScreenBG;
+@property (nonatomic,weak) MessageModel* messageModel;
+@property (nonatomic,weak) UIViewExtention* viewToOverLap;
+@property (nonatomic,weak) UIView* fullScreenBG;
 @end

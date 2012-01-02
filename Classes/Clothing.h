@@ -28,6 +28,6 @@
 //- (NSString* ) loadImage:(NSString *) url;
 
 
-@property (retain) NSDictionary* JSON;
+@property (strong) NSDictionary* JSON;
 
 @end
