@@ -55,13 +55,13 @@
 	
 	CGSize contentViewArea = CGSizeMake((contentView.frame.size.width - 20), (contentView.frame.size.height-30));
     
-    float ratio = userImageView.image.size.height/userImageView.image.size.width;
+    float ratio = clothingImageView.image.size.height/clothingImageView.image.size.width;
     int width = contentView.frame.size.width;
     int height = ratio * width;
 	if(height < contentView.frame.size.height) {
         [contentView setBackgroundColor: [UIColor grayColor]];
     }
-    [userImageView setFrame:CGRectMake(0, 0, width, height)];
+    [clothingImageView setFrame:CGRectMake(0, 0, width, height)];
     
     /*
     if(height < contentView.frame.size.height) {
@@ -70,17 +70,17 @@
         [userImageView setFrame:CGRectMake(0, 0, width, contentView.frame.size.height*ratio)];
     }
     */
-	[userNameLabel sizeToFit];
-	[userNameLabel setFrame:CGRectMake(userImageView.frame.origin.x + userImageView.frame.size.width + 10, 5, (contentViewArea.width - (userImageView.frame.size.width + 10)), userNameLabel.frame.size.height)];
-	[timeStampLabel sizeToFit];
-	[timeStampLabel setFrame:CGRectMake(userNameLabel.frame.origin.x, userNameLabel.frame.origin.y + userNameLabel.frame.size.height, timeStampLabel.frame.size.width, timeStampLabel.frame.size.height)];
+	[clothingNameLabel sizeToFit];
+	[clothingNameLabel setFrame:CGRectMake(clothingImageView.frame.origin.x + clothingImageView.frame.size.width + 10, 5, (contentViewArea.width - (clothingImageView.frame.size.width + 10)), clothingNameLabel.frame.size.height)];
+	[storeNameLabel sizeToFit];
+	[storeNameLabel setFrame:CGRectMake(clothingNameLabel.frame.origin.x, clothingNameLabel.frame.origin.y + clothingNameLabel.frame.size.height, storeNameLabel.frame.size.width, storeNameLabel.frame.size.height)];
 
 	
-	[messageLabel setFrame:CGRectMake(userImageView.frame.origin.x ,(userImageView.frame.origin.y + userImageView.frame.size.height), contentViewArea.width, contentViewArea.height - (userImageView.frame.origin.y + userImageView.frame.size.height))];	
+	[descriptionLabel setFrame:CGRectMake(clothingImageView.frame.origin.x ,(clothingImageView.frame.origin.y + clothingImageView.frame.size.height), contentViewArea.width, contentViewArea.height - (clothingImageView.frame.origin.y + clothingImageView.frame.size.height))];	
 		
 		
-	[messageLabel setText:clothingModel.clothing.Description];
-	messageLabel.contentMode = UITextAlignmentLeft;
+	[descriptionLabel setText:clothingModel.clothing.Description];
+	descriptionLabel.contentMode = UITextAlignmentLeft;
 		
 //		float widthOffset = (messageLabel.frame.size.width - textSize.width)/ 2;
 //		float heightOffset = (messageLabel.frame.size.height - textSize.height)/2;
@@ -95,10 +95,10 @@
 	[contentView setBackgroundColor:[UIColor whiteColor]];
 	contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-	userImageView = [[UIImageView alloc] init];
-	userImageView.image = [UIImage imageWithContentsOfFile:clothingModel.clothing.Image];
-	[userImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
-	[contentView addSubview:userImageView];
+	clothingImageView = [[UIImageView alloc] init];
+	clothingImageView.image = [UIImage imageWithContentsOfFile:clothingModel.clothing.Image];
+	[clothingImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
+	[contentView addSubview:clothingImageView];
 
 	
 	[self addSubview:contentView];

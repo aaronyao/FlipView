@@ -36,10 +36,10 @@
 
 @interface TitleAndTextView : UIViewExtention {
 	UIView* contentView;
-	UIImageView* userImageView;
-	UILabel* userNameLabel;
-	UILabel* timeStampLabel;
-	UILabel* messageLabel;
+	UIImageView* clothingImageView;
+	UILabel* clothingNameLabel;
+	UILabel* storeNameLabel;
+	UILabel* descriptionLabel;
 }
 
 - (id) initWithClothingModel:(ClothingModel*)clothingModel;
