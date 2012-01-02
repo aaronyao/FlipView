@@ -37,10 +37,10 @@
 	MessageModel* __weak messageModel;
 	UIView* contentView;
 
-	UIImageView* userImageView;
-	UILabel* userNameLabel;
-	UILabel* timeStampLabel;
-	UILabel* messageLabel;
+	UIImageView* clothingImageView;
+	UILabel* clothingNameLabel;
+	UILabel* storeNameLabel;
+	UILabel* descriptionLabel;
 
 	UIViewExtention* __weak viewToOverLap;
 	UIView* __weak fullScreenBG;
