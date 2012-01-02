@@ -48,24 +48,26 @@
 -(NSString*) Image
 {
 
+    NSString* filename = [self md5:[JSON objectForKey:@"image"]];filename = [filename stringByAppendingString:@".png"];
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	NSString *pngFilePath = [NSString stringWithFormat:@"%@/%@",docDir, filename];
+    
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:pngFilePath])
+        return pngFilePath;
+    
     NSURL *url = [NSURL URLWithString:[JSON objectForKey:@"image"]];
     UIImage* img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    NSString* filename = [self md5:[JSON objectForKey:@"image"]];
-    filename = [filename stringByAppendingString:@".png"];
     
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
 	// If you go to the folder below, you will find those pictures
 	NSLog(@"%@",docDir);
     
 	NSLog(@"saving png");
-	NSString *pngFilePath = [NSString stringWithFormat:@"%@/%@",docDir, filename];
 	NSData *data1 = [NSData dataWithData:UIImagePNGRepresentation(img)];
 	[data1 writeToFile:pngFilePath atomically:YES];
     
 	NSLog(@"saving image done");
-    
-	//[img release];
     return pngFilePath;
 }
 
