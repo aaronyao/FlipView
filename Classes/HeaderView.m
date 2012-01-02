@@ -49,7 +49,7 @@
     
 	UIImageView* userImageView = [[UIImageView alloc] init];
     [userImageView setImage:[UIImage imageWithContentsOfFile:[[Session getUser] Image]]];
-	[userImageView setFrame:CGRectMake(10, 1, 50, 48)];
+	[userImageView setFrame:CGRectMake(0, 0, 50, 48)];
 	[self addSubview:userImageView];
 	
 	wallNameLabel = [[UILabel alloc] init];
@@ -58,6 +58,7 @@
 	[wallNameLabel setTextColor:RGBCOLOR(166,166,166)];
 	wallNameLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[wallNameLabel sizeToFit];
+    [self setBackgroundColor:[UIColor blackColor]];
 	[wallNameLabel setFrame:CGRectMake(userImageView.frame.origin.x + userImageView.frame.size.width + 10, 5, self.frame.size.width - (userImageView.frame.origin.x + userImageView.frame.size.width + 20), wallNameLabel.frame.size.height)];
 	[self addSubview:wallNameLabel];
 	

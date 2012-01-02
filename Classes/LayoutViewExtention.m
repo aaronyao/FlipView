@@ -44,7 +44,7 @@
 
 -(void) setFooterView:(FooterView *)footerview {
 	footerView = footerview;
-	[self addSubview:(UIView*)footerview];
+	//[self addSubview:(UIView*)footerview];
 }
 
 -(void) setHeaderView:(HeaderView *)headerview {

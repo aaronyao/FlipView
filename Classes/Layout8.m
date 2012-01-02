@@ -81,7 +81,7 @@
 	[view3 setBackgroundColor:[UIColor whiteColor]];
 	[view4 setBackgroundColor:[UIColor whiteColor]];
 	[view5 setBackgroundColor:[UIColor whiteColor]];
-	
+	```
 	for (UIView* myview in [self subviews]) {
 		if ([myview isKindOfClass:[UIViewExtention class]]) {
 			if (self.isFullScreen) {
@@ -103,11 +103,11 @@
 		if (view1 != nil) {
 			
 			[view1 setFrame:CGRectMake(768 /2, 50, 768 /2, (954/3)+40)];			
-			[view2 setFrame:CGRectMake(768 /2,((954/3)+40) + 50, 768 /2, ((954/3)*2) - 60)];
+			[view2 setFrame:CGRectMake(768 /2,((954/3)+40) + 50, 768 /2, ((954/3)*2) - 40)];
 			
 			[view3 setFrame:CGRectMake(0, 50, 768 /2, 954 /3 -6)];
 			[view4 setFrame:CGRectMake(0, (954 /3) + 44, 768 /2, 954/3 -7)];
-			[view5 setFrame:CGRectMake(0, (954 /3 *2)+ 37, 768 /2, 954/3-7)];
+			[view5 setFrame:CGRectMake(0, (954 /3 *2)+ 37, 768 /2, 954/3-7+20)];
 			
 		}
 	}else {

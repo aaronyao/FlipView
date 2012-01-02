@@ -69,7 +69,7 @@
         
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         
-        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=Clossit"];
+        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=clossit&results=50"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
        
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];

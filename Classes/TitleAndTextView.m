@@ -53,7 +53,22 @@
 	[contentView setFrame:CGRectMake(1, 1, self.frame.size.width-2, self.frame.size.height - 2)];
 	
 	CGSize contentViewArea = CGSizeMake((contentView.frame.size.width - 20), (contentView.frame.size.height-30));
-	
+    
+    float ratio = userImageView.image.size.height/userImageView.image.size.width;
+    int width = contentView.frame.size.width;
+    int height = ratio * width;
+	if(height < contentView.frame.size.height) {
+        [contentView setBackgroundColor: [UIColor grayColor]];
+    }
+    [userImageView setFrame:CGRectMake(0, 0, width, height)];
+    
+    /*
+    if(height < contentView.frame.size.height) {
+        ratio = userImageView.image.size.height/userImageView.image.size.width;
+        int width = contentView.frame.size.width;
+        [userImageView setFrame:CGRectMake(0, 0, width, contentView.frame.size.height*ratio)];
+    }
+    */
 	[userNameLabel sizeToFit];
 	[userNameLabel setFrame:CGRectMake(userImageView.frame.origin.x + userImageView.frame.size.width + 10, 5, (contentViewArea.width - (userImageView.frame.size.width + 10)), userNameLabel.frame.size.height)];
 	[timeStampLabel sizeToFit];
@@ -70,6 +85,7 @@
 //		float heightOffset = (messageLabel.frame.size.height - textSize.height)/2;
 		//[messageLabel setContentInset:UIEdgeInsetsMake(heightOffset, widthOffset, heightOffset, widthOffset)];
 
+    
 
 }
 
@@ -80,33 +96,9 @@
 
 	userImageView = [[UIImageView alloc] init];
 	userImageView.image = [UIImage imageWithContentsOfFile:messageModel.userImage];
-	[userImageView setFrame:CGRectMake(10, 10, 50, 50)];
+	[userImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
 	[contentView addSubview:userImageView];
 
-	userNameLabel = [[UILabel alloc] init];
-	[userNameLabel setText:[NSString stringWithFormat:@"%@",messageModel.userName]];
-	userNameLabel.font =[UIFont fontWithName:@"Helvetica" size:25];
-	[userNameLabel setTextColor:RGBCOLOR(2,90,177)];
-	[userNameLabel setBackgroundColor:[UIColor clearColor]];
-	[contentView addSubview:userNameLabel];
-	
-	
-	timeStampLabel = [[UILabel alloc] init];
-	[timeStampLabel setText:messageModel.createdAt];
-	timeStampLabel.font =[UIFont fontWithName:@"Helvetica" size:12];
-	[timeStampLabel setTextColor:RGBCOLOR(111,111,111)];
-	[timeStampLabel setBackgroundColor:[UIColor clearColor]];
-	[contentView addSubview:timeStampLabel];
-	
-	messageLabel = [[UILabel alloc] init];
-	messageLabel.font = [UIFont fontWithName:@"Helvetica" size:20];
-	messageLabel.textColor =  RGBCOLOR(33,33,33);
-	messageLabel.highlightedTextColor = RGBCOLOR(33,33,33);
-	messageLabel.contentMode = UIViewContentModeCenter;
-	messageLabel.textAlignment = UITextAlignmentLeft;
-	[messageLabel setBackgroundColor:[UIColor whiteColor]];
-	messageLabel.numberOfLines = 0;
-	[contentView addSubview:messageLabel];
 	
 	[self addSubview:contentView];
 	

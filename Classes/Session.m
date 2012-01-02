@@ -16,7 +16,7 @@ static Me* _me = nil;
 +(Me*) getUser
 {
     if(_me == nil)
-        _me = [[Me alloc] initWithLoginData:@"taimur@clossit.com" withPw:@"Engin33r"];
+        _me = [[Me alloc] initWithLoginData:@"admin@clossit.com" withPw:@"Engin33r"];
     return _me;
 }
 
