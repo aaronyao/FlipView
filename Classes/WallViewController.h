@@ -31,7 +31,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AFKPageFlipper.h"
-#import "MessageModel.h"
+#import "ClothingModel.h"
 #import "FullScreenView.h"
 
 @interface WallViewController : UIViewController <AFKPageFlipperDataSource> {

@@ -30,15 +30,16 @@
 //
 
 #import "TitleAndTextView.h"
-#import "MessageModel.h"
+#import "ClothingModel.h"
+#import "Clothing.h"
 
 @implementation TitleAndTextView
 
-@synthesize messageModel;
+@synthesize clothingModel;
 
-- (id) initWithMessageModel:(MessageModel*)messagemodel{
+- (id) initWithClothingModel:(ClothingModel*)clothingmodel{
 	if (self = [super init]) {
-		self.messageModel = messagemodel;
+		self.clothingModel = clothingmodel;
 		[self initializeFields];
 		
 		UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
@@ -78,7 +79,7 @@
 	[messageLabel setFrame:CGRectMake(userImageView.frame.origin.x ,(userImageView.frame.origin.y + userImageView.frame.size.height), contentViewArea.width, contentViewArea.height - (userImageView.frame.origin.y + userImageView.frame.size.height))];	
 		
 		
-	[messageLabel setText:messageModel.content];
+	[messageLabel setText:clothingModel.clothing.Description];
 	messageLabel.contentMode = UITextAlignmentLeft;
 		
 //		float widthOffset = (messageLabel.frame.size.width - textSize.width)/ 2;
@@ -95,7 +96,7 @@
 	contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
 	userImageView = [[UIImageView alloc] init];
-	userImageView.image = [UIImage imageWithContentsOfFile:messageModel.userImage];
+	userImageView.image = [UIImage imageWithContentsOfFile:clothingModel.clothing.Image];
 	[userImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
 	[contentView addSubview:userImageView];
 
@@ -106,7 +107,7 @@
 }
 
 -(void)tapped:(UITapGestureRecognizer *)recognizer {
-	[[FlipViewAppDelegate instance] showViewInFullScreen:self withModel:self.messageModel];
+	[[FlipViewAppDelegate instance] showViewInFullScreen:self withModel:self.clothingModel];
 }
 
 

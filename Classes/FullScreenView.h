@@ -31,7 +31,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UIViewExtention.h"
-#import "MessageModel.h"
+#import "ClothingModel.h"
 
 @interface FullScreenView : UIViewExtention  {
 	MessageModel* __weak messageModel;
@@ -49,10 +49,10 @@
 	UIScrollView* scrollView;
 }
 
--(id)initWithModel:(MessageModel*)model;
+-(id)initWithModel:(ClothingModel*)model;
 -(void)showFields;
 
-@property (nonatomic,weak) MessageModel* messageModel;
+@property (nonatomic,weak) ClothingModel* clothingModel;
 @property (nonatomic,weak) UIViewExtention* viewToOverLap;
 @property (nonatomic,weak) UIView* fullScreenBG;
 @end

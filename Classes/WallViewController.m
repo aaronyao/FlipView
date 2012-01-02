@@ -47,7 +47,7 @@
 #import "FooterView.h"
 #import "HeaderView.h"
 
-#import "MessageModel.h"
+#import "ClothingModel.h"
 #import "Clothing.h"
 #import "SBJson.h"
 #import "Session.h"
@@ -82,10 +82,8 @@
         {
             
             Clothing* a = [[Clothing alloc] initFromDictionary:[item objectForKey:@"clothing"]];
-            MessageModel* messageModel = [[MessageModel alloc] initWithClothing:a];
-            messageModel.messageID = count++;
-            messageModel.createdAt = [item objectForKey:@"added"];
-            [messageArrayCollection addObject:messageModel];
+            ClothingModel* clothingModel = [[ClothingModel alloc] initWithClothing:a];
+            [messageArrayCollection addObject:clothingModel];
         }
 		
 		[self buildPages:messageArrayCollection];
@@ -181,23 +179,24 @@
 		TitleAndTextView* view5forLayout;
 		for (int i = 0; i < [messageArray count]; i++) {
 			if (i == 0) {
-				view1forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view1forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view1forLayout forKey:@"view1"];
 			}
 			if (i == 1) {
-				view2forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view2forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
+
 				[viewDictonary setObject:view2forLayout forKey:@"view2"];
 			}
 			if (i == 2) {
-				view3forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view3forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view3forLayout forKey:@"view3"];
 			}
 			if (i == 3) {
-				view4forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view4forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view4forLayout forKey:@"view4"];
 			}
 			if (i == 4) {
-				view5forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view5forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view5forLayout forKey:@"view5"];
 			}
 		}

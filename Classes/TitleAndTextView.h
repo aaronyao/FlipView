@@ -31,7 +31,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UIViewExtention.h"
-@class MessageModel;
+
+@class ClothingModel;
 
 @interface TitleAndTextView : UIViewExtention {
 	UIView* contentView;
@@ -41,9 +42,9 @@
 	UILabel* messageLabel;
 }
 
-- (id) initWithMessageModel:(MessageModel*)messagemodel;
+- (id) initWithClothingModel:(ClothingModel*)clothingModel;
 - (void) initializeFields;
 	
-@property (nonatomic,strong) MessageModel* messageModel;
+@property (nonatomic,strong) ClothingModel* clothingModel;
 
 @end

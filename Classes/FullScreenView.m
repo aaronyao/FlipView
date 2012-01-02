@@ -29,15 +29,16 @@
  
 //
 #import "FullScreenView.h"
-#import "MessageModel.h"
+#import "ClothingModel.h"
+#import "Clothing.h"
 
 @implementation FullScreenView
 
-@synthesize messageModel,viewToOverLap,fullScreenBG;
+@synthesize clothingModel,viewToOverLap,fullScreenBG;
 
--(id)initWithModel:(MessageModel*)model {
+-(id)initWithModel:(ClothingModel*)model {
 	if (self = [super init]) {
-		messageModel = model;
+		clothingModel = model;
 		
 		[self setBackgroundColor:RGBCOLOR(243,243,243)];
 		
@@ -47,19 +48,19 @@
 		userImageView = [[UIImageView alloc] init];
 		[userImageView setBackgroundColor:[UIColor clearColor]];
 		[userImageView setFrame:CGRectMake(10, 10, 130, 130)];
-		[userImageView setImage:[UIImage imageWithContentsOfFile:messageModel.userImage]];
+		[userImageView setImage:[UIImage imageWithContentsOfFile:clothingModel.clothing.Image]];
 		[contentView addSubview:userImageView];
 		
 		userNameLabel = [[UILabel alloc] init];
 		userNameLabel.font =[UIFont fontWithName:@"Helvetica" size:25];
 		[userNameLabel setTextColor:RGBCOLOR(2,90,177)];
 		[userNameLabel setBackgroundColor:[UIColor clearColor]];
-		[userNameLabel setText:[NSString stringWithFormat:@"%@",messageModel.userName]];
+		[userNameLabel setText:[NSString stringWithFormat:@"%@",clothingModel.clothing.Name]];
 		[userNameLabel setFrame:CGRectMake(userImageView.frame.origin.x + userImageView.frame.size.width + 10, 5, 0, 0)];
 		[contentView addSubview:userNameLabel];
 		
 		timeStampLabel = [[UILabel alloc] init];
-		[timeStampLabel setText:messageModel.createdAt];
+		[timeStampLabel setText:clothingModel.clothing.Store];
 		timeStampLabel.font =[UIFont fontWithName:@"Helvetica" size:12];
 		[timeStampLabel setTextColor:RGBCOLOR(111,111,111)];
 		[timeStampLabel setBackgroundColor:[UIColor clearColor]];
@@ -116,7 +117,7 @@
 		[scrollView setFrame:CGRectMake(10, userImageView.frame.origin.y + userImageView.frame.size.height + 10, contentViewArea.width-20, contentViewArea.height - (userImageView.frame.origin.y + userImageView.frame.size.height + 10))];
 
 		///////////////////////////////////////////////////////////////
-		[messageLabel setText:messageModel.content];
+		[messageLabel setText:clothingModel.clothing.Description];
 		messageLabel.numberOfLines = 0;
 		[messageLabel sizeToFit];
 		[messageLabel setFrame:CGRectMake(0, 0, scrollView.frame.size.width,messageLabel.frame.size.height)];

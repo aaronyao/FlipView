@@ -81,7 +81,7 @@
 	[view3 setBackgroundColor:[UIColor whiteColor]];
 	[view4 setBackgroundColor:[UIColor whiteColor]];
 	[view5 setBackgroundColor:[UIColor whiteColor]];
-	```
+    
 	for (UIView* myview in [self subviews]) {
 		if ([myview isKindOfClass:[UIViewExtention class]]) {
 			if (self.isFullScreen) {
