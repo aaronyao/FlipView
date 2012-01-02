@@ -30,6 +30,7 @@
 //
 
 #import "HeaderView.h"
+#import "Session.h"
 
 @implementation HeaderView
 
@@ -39,12 +40,12 @@
 	currrentInterfaceOrientation = interfaceOrientation;
 }
 
--(void) setWallTitleText:(NSString *)wallTitle {
+-(void) setWallTitleText:(NSString *)wallTitle 
+{
 	wallTitleText = wallTitle;
-	
-	
+    
 	UIImageView* userImageView = [[UIImageView alloc] init];
-	userImageView.image = [UIImage imageNamed:@"missing-people.png"];
+    [userImageView setImage:[UIImage imageWithContentsOfFile:[getUser() Image]]];
 	[userImageView setFrame:CGRectMake(10, 1, 50, 48)];
 	[self addSubview:userImageView];
 	[userImageView release];

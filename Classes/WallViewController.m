@@ -50,6 +50,8 @@
 #import "MessageModel.h"
 #import "Clothing.h"
 #import "SBJson.h"
+#import "Session.h"
+#import "Me.h"
 
 @implementation WallViewController
 
@@ -67,7 +69,10 @@
         
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         
-        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=Clossit&results=10"];
+        //log me in using Session.user here.
+        
+        
+        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=Clossit"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
        
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
@@ -75,33 +80,18 @@
         
         NSArray *items = [parser objectWithString:json_string error:nil];
         int count = 0;
+        
         for(NSDictionary *item in items)
         {
-            MessageModel* messageModel = [[MessageModel alloc] init];
+            
             Clothing* a = [[Clothing alloc] initFromDictionary:[item objectForKey:@"clothing"]];
+            MessageModel* messageModel = [[MessageModel alloc] initWithClothing:a];
             messageModel.messageID = count++;
-            messageModel.userName = [a Name];
-            messageModel.userImage = [a Image];
-            messageModel.createdAt = @"06/07/2011 at 01:00 AM";
-            messageModel.content = [a Description];
+            messageModel.createdAt = [item objectForKey:@"added"];
             [messageArrayCollection addObject:messageModel];
             [messageModel release];
             [a release];
         }
-		
-		/*for (int i = 1; i <= 18; i++) //to fill 18 blocks of messages.
-        {
-			
-			MessageModel* messageModel1 = [[MessageModel alloc] init];
-			messageModel1.messageID= i;
-			messageModel1.userName = @"Harry Potter";
-			messageModel1.userImage =  @"missing-people.png";
-			messageModel1.createdAt = @"06/07/2011 at 01:00 AM";
-			messageModel1.content = @"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-			
-			[messageArrayCollection addObject:messageModel1];
-			[messageModel1 release];
-		}*/
 		
 		[self buildPages:messageArrayCollection];
 		
@@ -229,7 +219,8 @@
 			
 			HeaderView* headerView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, layoutToReturn.frame.size.width, 50)];
 			headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-			[headerView setWallTitleText:@"My Tweet"];
+            
+			[headerView setWallTitleText:[getUser() Name]];
 			[headerView setBackgroundColor:[UIColor whiteColor]];
 			[headerView rotate:self.interfaceOrientation animation:NO];
 			[layoutToReturn setHeaderView:headerView];

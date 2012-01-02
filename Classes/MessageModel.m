@@ -30,6 +30,7 @@
 //
 
 #import "MessageModel.h"
+#import "Clothing.h"
 
 @implementation MessageModel
 
@@ -39,8 +40,10 @@
 @synthesize userName;
 @synthesize userImage;
 
--(id)initWithMessageObject:(NSDictionary*)messageObject {
-	if (self = [super init]) {
+-(id)initWithMessageObject:(NSDictionary*)messageObject 
+{
+	if (self = [super init]) 
+    {
 		self.messageID = (NSInteger)[[messageObject objectForKey:@"id"] intValue];
 		self.content = [messageObject objectForKey:@"content"];
 		self.createdAt = [messageObject objectForKey:@"created_at"];
@@ -50,8 +53,21 @@
 	return self;
 }
 
+-(id)initWithClothing:(Clothing*)clothingItem
+{
+    if(self = [super init])
+    {
+        self.content = [clothingItem Description];
+        self.userImage = [clothingItem Image];
+        self.userName = [clothingItem Name];
+        self.messageID = [[clothingItem Id] integerValue];
+    }
+    
+    return self;
+}
 
-- (void) dealloc {
+- (void) dealloc 
+{
 	[content release];
 	[createdAt release];
 	[userName release];

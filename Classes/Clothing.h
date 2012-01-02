@@ -22,7 +22,10 @@
 - (NSString *) Image;
 - (NSString*) Id;
 - (NSString*) Store;
+- (NSString*) Gender;
+- (NSString*) dateIndexed;
 - (NSString *) md5:(NSString *) input;
+//- (NSString* ) loadImage:(NSString *) url;
 
 
 @property (retain) NSDictionary* JSON;

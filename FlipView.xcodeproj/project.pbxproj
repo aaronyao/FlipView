@@ -38,6 +38,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		F93B2D6F14B1131700E53625 /* ClossitUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F93B2D6E14B1131600E53625 /* ClossitUser.m */; };
+		F96C08F114B127800021E001 /* Me.m in Sources */ = {isa = PBXBuildFile; fileRef = F96C08F014B127800021E001 /* Me.m */; };
 		F9E8359414AE7A1A002A8B42 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8357C14AE7A1A002A8B42 /* NSObject+SBJson.m */; };
 		F9E8359514AE7A1A002A8B42 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8357F14AE7A1A002A8B42 /* SBJsonParser.m */; };
 		F9E8359614AE7A1A002A8B42 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8358114AE7A1A002A8B42 /* SBJsonStreamParser.m */; };
@@ -51,6 +53,7 @@
 		F9E8359E14AE7A1A002A8B42 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8359114AE7A1A002A8B42 /* SBJsonUTF8Stream.m */; };
 		F9E8359F14AE7A1A002A8B42 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8359314AE7A1A002A8B42 /* SBJsonWriter.m */; };
 		F9E835A314AE8EE6002A8B42 /* Clothing.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E835A214AE8EE6002A8B42 /* Clothing.m */; };
+		F9EDB0F014B173B600CD9196 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EDB0EF14B173B600CD9196 /* Session.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +110,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FlipView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipView_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* FlipView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "FlipView-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		F93B2D6D14B1131600E53625 /* ClossitUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClossitUser.h; sourceTree = "<group>"; };
+		F93B2D6E14B1131600E53625 /* ClossitUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClossitUser.m; sourceTree = "<group>"; };
+		F96C08EF14B127800021E001 /* Me.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Me.h; sourceTree = "<group>"; };
+		F96C08F014B127800021E001 /* Me.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Me.m; sourceTree = "<group>"; };
 		F9E8357B14AE7A1A002A8B42 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		F9E8357C14AE7A1A002A8B42 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
 		F9E8357D14AE7A1A002A8B42 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -134,6 +141,8 @@
 		F9E8359314AE7A1A002A8B42 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		F9E835A114AE8EE6002A8B42 /* Clothing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clothing.h; sourceTree = "<group>"; };
 		F9E835A214AE8EE6002A8B42 /* Clothing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clothing.m; sourceTree = "<group>"; };
+		F9EDB0EE14B173B600CD9196 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		F9EDB0EF14B173B600CD9196 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +174,12 @@
 				1D3623250D0F684500981E51 /* FlipViewAppDelegate.m */,
 				F9E835A114AE8EE6002A8B42 /* Clothing.h */,
 				F9E835A214AE8EE6002A8B42 /* Clothing.m */,
+				F96C08EF14B127800021E001 /* Me.h */,
+				F96C08F014B127800021E001 /* Me.m */,
+				F93B2D6D14B1131600E53625 /* ClossitUser.h */,
+				F93B2D6E14B1131600E53625 /* ClossitUser.m */,
+				F9EDB0EE14B173B600CD9196 /* Session.h */,
+				F9EDB0EF14B173B600CD9196 /* Session.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -433,6 +448,9 @@
 				F9E8359E14AE7A1A002A8B42 /* SBJsonUTF8Stream.m in Sources */,
 				F9E8359F14AE7A1A002A8B42 /* SBJsonWriter.m in Sources */,
 				F9E835A314AE8EE6002A8B42 /* Clothing.m in Sources */,
+				F93B2D6F14B1131700E53625 /* ClossitUser.m in Sources */,
+				F96C08F114B127800021E001 /* Me.m in Sources */,
+				F9EDB0F014B173B600CD9196 /* Session.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -484,7 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

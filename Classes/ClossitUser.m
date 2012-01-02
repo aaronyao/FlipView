@@ -1,21 +1,22 @@
 //
-//  Clothing.m
+//  ClossitUser.m
 //  FlipView
 //
-//  Created by Taimur Shah on 12/30/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Taimur Shah on 1/1/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Clothing.h"
+#import "ClossitUser.h"
 #import "SBJson.h"
 #import <CommonCrypto/CommonDigest.h>
 
 #define CC_MD5_DIGEST_LENGTH 16
 
-@implementation Clothing
-@synthesize JSON;
+@implementation ClossitUser
 
--(Clothing *) initFromString:(NSString *)json
+@synthesize JSON, imgPath;
+
+-(ClossitUser*) initFromString:(NSString *)json
 {
     if(self==[super init])
     {
@@ -25,32 +26,48 @@
     return self;
 }
 
--(Clothing*) initFromDictionary:(NSDictionary *)json
+-(ClossitUser*) initFromDictionary:(NSDictionary *)json
 {
     if(self == [super init])
     {
-        self.JSON = json;
+        JSON = json;
     }
-    
     return self;
 }
 
--(NSString*) Name
+-(NSString*) ID
 {
-    return [self.JSON objectForKey:@"name"];
+    return [JSON objectForKey:@"id"];
 }
 
--(NSString*) Description
+-(NSString*)Name
 {
-    return [JSON objectForKey:@"description"];
+    return [JSON objectForKey:@"name"];
 }
 
--(NSString*) Image
+-(NSString*)FirstName
 {
+    return [JSON objectForKey:@"first"];
+}
 
-    NSURL *url = [NSURL URLWithString:[JSON objectForKey:@"image"]];
+-(NSString*)LastName
+{
+    return [JSON objectForKey:@"last"];
+}
+
+-(NSURL*)Page
+{
+    return [NSURL URLWithString:[@"http://www.clossit.com" stringByAppendingString:[JSON objectForKey:@"page"]]]; 
+}
+
+-(NSString*)Image
+{
+    if([imgPath length] != 0)
+        return imgPath;
+    
+    NSURL *url = [NSURL URLWithString:[JSON objectForKey:@"avatar"]];
     UIImage* img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    NSString* filename = [self md5:[JSON objectForKey:@"image"]];
+    NSString* filename = [self md5:[JSON objectForKey:@"avatar"]];
     filename = [filename stringByAppendingString:@".png"];
     
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -65,33 +82,8 @@
     
 	NSLog(@"saving image done");
     
-	//[img release];
+	imgPath = pngFilePath;
     return pngFilePath;
-}
-
--(NSString *) Store
-{
-    return [JSON objectForKey:@"store"];
-}
-
--(NSString*) Gender
-{
-    return [JSON objectForKey:@"gender"];
-}
-
--(NSString*) Id
-{
-    return [JSON objectForKey:@"id"];
-}
-
--(NSString *)URL
-{
-    return [JSON objectForKey:@"url"];
-}
-
--(NSString*) dateIndexed
-{
-    return [JSON objectForKey:@"added"];
 }
 
 - (NSString *) md5:(NSString *) input
@@ -106,13 +98,8 @@
         [output appendFormat:@"%02x", digest[i]];
     
     return  output;
-   
+    
 }
 
-- (void) dealloc 
-{
-	[JSON release];
-	[super dealloc];
-}
 
 @end
