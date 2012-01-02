@@ -68,16 +68,15 @@
 		messageArrayCollection = [[NSMutableArray alloc] init];
         
         SBJsonParser *parser = [[SBJsonParser alloc] init];
-        
-        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=clossit&results=50"];
+        NSString *surl = [@"http://api.clossit.com/api/User.aspx?q=suggestions&results=24&key=" stringByAppendingString:[Session getUser].apiKey];
+        NSLog(surl);
+        NSURL *url = [NSURL URLWithString:surl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
        
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
         
         NSArray *items = [parser objectWithString:json_string error:nil];
-        int count = 0;
-        
         for(NSDictionary *item in items)
         {
             
