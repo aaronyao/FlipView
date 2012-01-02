@@ -98,8 +98,7 @@
 }
 
 - (int)getRandomNumber:(int)from to:(int)to {
-	//return (int)from + random() % (to-from+1);
-    return to;
+	return (int)from + random() % (to-from+1);
 }
 
 
@@ -115,6 +114,13 @@
 	
 	remainingMessageCount = totalMessageCount;
 	
+    while(remainingMessageCount > 5) {
+        int i = [self getRandomNumber:1 to:5];
+        remainingMessageCount -= i;
+		[viewControlerStack addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    
+    /*
 	for (int i=1; i<=numOfGroup; i++) {
 		
 		remainingMessageCount = totalMessageCount - (i * 5);
@@ -122,6 +128,7 @@
 		
 		[viewControlerStack addObject:[NSString stringWithFormat:@"%d",randomNumber]];
 	}
+     */
 	
 	if (remainingMessageCount > 0) {
 		[viewControlerStack addObject:[NSString stringWithFormat:@"%d",remainingMessageCount]];
