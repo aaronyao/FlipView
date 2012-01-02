@@ -10,11 +10,14 @@
 #import "Me.h"
 
 
+
 @interface Session : NSObject 
 {
   
 }
 	
 +(Me*) getUser;
++(NSString*) getImage:(NSString*) url;
++(NSString*) md5:(NSString*) input;
 
 @end

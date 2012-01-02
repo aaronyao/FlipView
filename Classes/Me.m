@@ -7,9 +7,8 @@
 //
 
 #import "Me.h"
-#import <CommonCrypto/CommonDigest.h>
+#import "Session.h"
 
-#define CC_MD5_DIGEST_LENGTH 16
 @implementation Me
 @synthesize apiKey;
 
@@ -20,7 +19,7 @@
     {
     //generate apiKey
     NSLog(@"Me init called.");
-    apiKey = [self md5:[[email stringByAppendingString:@":"] stringByAppendingString:pw]];
+    apiKey = [Session md5:[[email stringByAppendingString:@":"] stringByAppendingString:pw]];
 
     //download json
     NSURL *url = [NSURL URLWithString:[@"http://api.clossit.com/api/User.aspx?q=basic&key=" stringByAppendingString:apiKey]];
