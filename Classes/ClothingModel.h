@@ -32,21 +32,12 @@
 #import <Foundation/Foundation.h>
 @class Clothing;
 
-@interface MessageModel : NSObject {
-	NSInteger messageID;
+@interface ClothingModel : NSObject {
 	NSString* content;
-	NSString* createdAt; //where this shows up you want Store
-	NSString* userName;
-	NSString* userImage;
 }
 
--(id)initWithMessageObject:(NSDictionary*)messageObject;
 -(id)initWithClothing:(Clothing*)clothingItem;
 
-@property (nonatomic,assign) NSInteger messageID;
-@property (nonatomic,strong) NSString* content;
-@property (nonatomic,strong) NSString* createdAt;
-@property (nonatomic,strong) NSString* userName;
-@property (nonatomic,strong) NSString* userImage;
+@property (nonatomic,strong) Clothing* clothing;
 
 @end

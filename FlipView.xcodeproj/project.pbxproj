@@ -29,7 +29,7 @@
 		1873AC4713D1743A001A999B /* Layout3.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873AC3C13D1743A001A999B /* Layout3.m */; };
 		1873AC4813D1743A001A999B /* Layout2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873AC3E13D1743A001A999B /* Layout2.m */; };
 		1873AC4913D1743A001A999B /* Layout1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873AC4013D1743A001A999B /* Layout1.m */; };
-		1873AC5913D17550001A999B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873AC5813D17550001A999B /* MessageModel.m */; };
+		1873AC5913D17550001A999B /* ClothingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873AC5813D17550001A999B /* ClothingModel.m */; };
 		18D45F7B13D4365000BB814D /* close-popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 18D45F7A13D4365000BB814D /* close-popup.png */; };
 		18FD403713DB18460080C465 /* License in Resources */ = {isa = PBXBuildFile; fileRef = 18FD403613DB18460080C465 /* License */; };
 		1D3623260D0F684500981E51 /* FlipViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* FlipViewAppDelegate.m */; };
@@ -96,8 +96,8 @@
 		1873AC3E13D1743A001A999B /* Layout2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layout2.m; sourceTree = "<group>"; };
 		1873AC3F13D1743A001A999B /* Layout1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout1.h; sourceTree = "<group>"; };
 		1873AC4013D1743A001A999B /* Layout1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layout1.m; sourceTree = "<group>"; };
-		1873AC5713D17550001A999B /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
-		1873AC5813D17550001A999B /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		1873AC5713D17550001A999B /* ClothingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClothingModel.h; sourceTree = "<group>"; };
+		1873AC5813D17550001A999B /* ClothingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothingModel.m; sourceTree = "<group>"; };
 		18D45F7A13D4365000BB814D /* close-popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-popup.png"; sourceTree = "<group>"; };
 		18FD403613DB18460080C465 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -255,8 +255,8 @@
 		1873AC5613D1753F001A999B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1873AC5713D17550001A999B /* MessageModel.h */,
-				1873AC5813D17550001A999B /* MessageModel.m */,
+				1873AC5713D17550001A999B /* ClothingModel.h */,
+				1873AC5813D17550001A999B /* ClothingModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				1873AC4713D1743A001A999B /* Layout3.m in Sources */,
 				1873AC4813D1743A001A999B /* Layout2.m in Sources */,
 				1873AC4913D1743A001A999B /* Layout1.m in Sources */,
-				1873AC5913D17550001A999B /* MessageModel.m in Sources */,
+				1873AC5913D17550001A999B /* ClothingModel.m in Sources */,
 				180E006713D19F83005DF14C /* WallViewController.m in Sources */,
 				F9E8359414AE7A1A002A8B42 /* NSObject+SBJson.m in Sources */,
 				F9E8359514AE7A1A002A8B42 /* SBJsonParser.m in Sources */,

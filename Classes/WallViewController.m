@@ -47,7 +47,7 @@
 #import "FooterView.h"
 #import "HeaderView.h"
 
-#import "MessageModel.h"
+#import "ClothingModel.h"
 #import "Clothing.h"
 #import "SBJson.h"
 #import "Session.h"
@@ -68,24 +68,21 @@
 		messageArrayCollection = [[NSMutableArray alloc] init];
         
         SBJsonParser *parser = [[SBJsonParser alloc] init];
-        
-        NSURL *url = [NSURL URLWithString:@"http://api.clossit.com/api/User.aspx?id=881&q=Clossit"];
+        NSString *surl = [@"http://api.clossit.com/api/User.aspx?q=suggestions&results=24&key=" stringByAppendingString:[Session getUser].apiKey];
+        NSLog(surl);
+        NSURL *url = [NSURL URLWithString:surl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
        
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
         NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
         
         NSArray *items = [parser objectWithString:json_string error:nil];
-        int count = 0;
-        
         for(NSDictionary *item in items)
         {
             
             Clothing* a = [[Clothing alloc] initFromDictionary:[item objectForKey:@"clothing"]];
-            MessageModel* messageModel = [[MessageModel alloc] initWithClothing:a];
-            messageModel.messageID = count++;
-            messageModel.createdAt = [item objectForKey:@"added"];
-            [messageArrayCollection addObject:messageModel];
+            ClothingModel* clothingModel = [[ClothingModel alloc] initWithClothing:a];
+            [messageArrayCollection addObject:clothingModel];
         }
 		
 		[self buildPages:messageArrayCollection];
@@ -101,8 +98,7 @@
 }
 
 - (int)getRandomNumber:(int)from to:(int)to {
-	//return (int)from + random() % (to-from+1);
-    return to;
+	return (int)from + random() % (to-from+1);
 }
 
 
@@ -114,10 +110,17 @@
 	
 	int remainingMessageCount = 0;
 	int totalMessageCount = [messageArray count];
-	int numOfGroup = totalMessageCount /5;
 	
 	remainingMessageCount = totalMessageCount;
 	
+    while(remainingMessageCount > 5) {
+        int i = [self getRandomNumber:1 to:5];
+        remainingMessageCount -= i;
+		[viewControlerStack addObject:[NSString stringWithFormat:@"%d",i]];
+    }
+    
+    /*
+    int numOfGroup = totalMessageCount /5;
 	for (int i=1; i<=numOfGroup; i++) {
 		
 		remainingMessageCount = totalMessageCount - (i * 5);
@@ -125,6 +128,7 @@
 		
 		[viewControlerStack addObject:[NSString stringWithFormat:@"%d",randomNumber]];
 	}
+     */
 	
 	if (remainingMessageCount > 0) {
 		[viewControlerStack addObject:[NSString stringWithFormat:@"%d",remainingMessageCount]];
@@ -147,29 +151,17 @@
 
   	LayoutViewExtention* layoutToReturn = nil;
 	NSInteger layoutNumber = [[viewControlerStack objectAtIndex:page-1] intValue];
-	
-	int remainingMessageCount = 0;
-	int totalMessageCount = [messageArrayCollection count];
-	int numOfGroup = totalMessageCount /5;
-	remainingMessageCount = totalMessageCount - (numOfGroup * 5);	
-	
+    
+    int count = [[viewControlerStack objectAtIndex:page-1] intValue];
 	int rangeFrom = 0;
-	int rangeTo = 0;
-	BOOL shouldContinue = FALSE;
-	
-	if (page <= numOfGroup) {
-		rangeFrom = (page * 5) -5;
-		rangeTo = 5;
-		shouldContinue = TRUE;
-	}else if (remainingMessageCount > 0) {
-		rangeFrom = [messageArrayCollection count] - remainingMessageCount;
-		rangeTo = remainingMessageCount;
-		shouldContinue = TRUE;
-	}
-	
+	BOOL shouldContinue = TRUE;
+    
+    for(int i=0; i<page-1; i++) {
+        rangeFrom += [[viewControlerStack objectAtIndex:i] intValue];
+    }
 	if (shouldContinue) {
 		
-		NSRange rangeForView = NSMakeRange(rangeFrom, rangeTo);
+		NSRange rangeForView = NSMakeRange(rangeFrom, count);
 		
 		NSArray* messageArray= [messageArrayCollection subarrayWithRange:rangeForView];
 		
@@ -181,23 +173,24 @@
 		TitleAndTextView* view5forLayout;
 		for (int i = 0; i < [messageArray count]; i++) {
 			if (i == 0) {
-				view1forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view1forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view1forLayout forKey:@"view1"];
 			}
 			if (i == 1) {
-				view2forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view2forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
+
 				[viewDictonary setObject:view2forLayout forKey:@"view2"];
 			}
 			if (i == 2) {
-				view3forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view3forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view3forLayout forKey:@"view3"];
 			}
 			if (i == 3) {
-				view4forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view4forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view4forLayout forKey:@"view4"];
 			}
 			if (i == 4) {
-				view5forLayout = [[TitleAndTextView alloc] initWithMessageModel:(MessageModel*)[messageArray objectAtIndex:i]];
+				view5forLayout = [[TitleAndTextView alloc] initWithClothingModel:(ClothingModel*)[messageArray objectAtIndex:i]];
 				[viewDictonary setObject:view5forLayout forKey:@"view5"];
 			}
 		}

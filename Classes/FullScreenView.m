@@ -29,57 +29,58 @@
  
 //
 #import "FullScreenView.h"
-#import "MessageModel.h"
+#import "ClothingModel.h"
+#import "Clothing.h"
 
 @implementation FullScreenView
 
-@synthesize messageModel,viewToOverLap,fullScreenBG;
+@synthesize clothingModel,viewToOverLap,fullScreenBG;
 
--(id)initWithModel:(MessageModel*)model {
+-(id)initWithModel:(ClothingModel*)model {
 	if (self = [super init]) {
-		messageModel = model;
+		clothingModel = model;
 		
 		[self setBackgroundColor:RGBCOLOR(243,243,243)];
 		
 		contentView = [[UIView alloc] init];
 		[contentView setBackgroundColor:RGBCOLOR(243,243,243)];
 		
-		userImageView = [[UIImageView alloc] init];
-		[userImageView setBackgroundColor:[UIColor clearColor]];
-		[userImageView setFrame:CGRectMake(10, 10, 130, 130)];
-		[userImageView setImage:[UIImage imageWithContentsOfFile:messageModel.userImage]];
-		[contentView addSubview:userImageView];
+		clothingImageView = [[UIImageView alloc] init];
+		[clothingImageView setBackgroundColor:[UIColor clearColor]];
+		[clothingImageView setFrame:CGRectMake(10, 10, 130, 130)];
+		[clothingImageView setImage:[UIImage imageWithContentsOfFile:clothingModel.clothing.Image]];
+		[contentView addSubview:clothingImageView];
 		
-		userNameLabel = [[UILabel alloc] init];
-		userNameLabel.font =[UIFont fontWithName:@"Helvetica" size:25];
-		[userNameLabel setTextColor:RGBCOLOR(2,90,177)];
-		[userNameLabel setBackgroundColor:[UIColor clearColor]];
-		[userNameLabel setText:[NSString stringWithFormat:@"%@",messageModel.userName]];
-		[userNameLabel setFrame:CGRectMake(userImageView.frame.origin.x + userImageView.frame.size.width + 10, 5, 0, 0)];
-		[contentView addSubview:userNameLabel];
+		clothingNameLabel = [[UILabel alloc] init];
+		clothingNameLabel.font =[UIFont fontWithName:@"Helvetica" size:25];
+		[clothingNameLabel setTextColor:RGBCOLOR(2,90,177)];
+		[clothingNameLabel setBackgroundColor:[UIColor clearColor]];
+		[clothingNameLabel setText:[NSString stringWithFormat:@"%@",clothingModel.clothing.Name]];
+		[clothingNameLabel setFrame:CGRectMake(clothingImageView.frame.origin.x + clothingImageView.frame.size.width + 10, 5, 0, 0)];
+		[contentView addSubview:clothingNameLabel];
 		
-		timeStampLabel = [[UILabel alloc] init];
-		[timeStampLabel setText:messageModel.createdAt];
-		timeStampLabel.font =[UIFont fontWithName:@"Helvetica" size:12];
-		[timeStampLabel setTextColor:RGBCOLOR(111,111,111)];
-		[timeStampLabel setBackgroundColor:[UIColor clearColor]];
-		[timeStampLabel setFrame:CGRectMake(userNameLabel.frame.origin.x, userNameLabel.frame.origin.y, 0, 0)];
-		timeStampLabel.alpha = 0;
-		[contentView addSubview:timeStampLabel];
+		storeNameLabel = [[UILabel alloc] init];
+		[storeNameLabel setText:clothingModel.clothing.Store];
+		storeNameLabel.font =[UIFont fontWithName:@"Helvetica" size:12];
+		[storeNameLabel setTextColor:RGBCOLOR(111,111,111)];
+		[storeNameLabel setBackgroundColor:[UIColor clearColor]];
+		[storeNameLabel setFrame:CGRectMake(clothingNameLabel.frame.origin.x, clothingNameLabel.frame.origin.y, 0, 0)];
+		storeNameLabel.alpha = 0;
+		[contentView addSubview:storeNameLabel];
 		
 		scrollView = [[UIScrollView alloc] init];
 		[scrollView setBackgroundColor:[UIColor clearColor]];
-		[scrollView setFrame:CGRectMake(10, userImageView.frame.origin.y + userImageView.frame.size.height + 10, 0, 0)];
+		[scrollView setFrame:CGRectMake(10, clothingImageView.frame.origin.y + clothingImageView.frame.size.height + 10, 0, 0)];
 		[contentView addSubview:scrollView];
 		
-		messageLabel = [[UILabel alloc] init];
-		messageLabel.numberOfLines = 0;	
-		messageLabel.font = [UIFont fontWithName:@"Helvetica" size:22];		
-		messageLabel.textColor =  RGBCOLOR(33,33,33);
-		messageLabel.highlightedTextColor = RGBCOLOR(33,33,33);
-		[messageLabel setBackgroundColor:[UIColor clearColor]];
-		messageLabel.alpha = 0;	
-		[scrollView addSubview:messageLabel];
+		descriptionLabel = [[UILabel alloc] init];
+		descriptionLabel.numberOfLines = 0;	
+		descriptionLabel.font = [UIFont fontWithName:@"Helvetica" size:22];		
+		descriptionLabel.textColor =  RGBCOLOR(33,33,33);
+		descriptionLabel.highlightedTextColor = RGBCOLOR(33,33,33);
+		[descriptionLabel setBackgroundColor:[UIColor clearColor]];
+		descriptionLabel.alpha = 0;	
+		[scrollView addSubview:descriptionLabel];
 		
 		
 		closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -105,23 +106,23 @@
 		
 		//[userImageView setFrame:CGRectMake(10, 10, 130, 130)];
 	
-		[userNameLabel sizeToFit];
-		[userNameLabel setFrame:CGRectMake(userImageView.frame.origin.x + userImageView.frame.size.width + 10, 5, (contentViewArea.width - (userImageView.frame.size.width + 10)) - 30, userNameLabel.frame.size.height)];
+		[clothingNameLabel sizeToFit];
+		[clothingNameLabel setFrame:CGRectMake(clothingImageView.frame.origin.x + clothingImageView.frame.size.width + 10, 5, (contentViewArea.width - (clothingImageView.frame.size.width + 10)) - 30, clothingNameLabel.frame.size.height)];
 
-		[timeStampLabel sizeToFit];
-		[timeStampLabel setFrame:CGRectMake(userNameLabel.frame.origin.x, userNameLabel.frame.origin.y + userNameLabel.frame.size.height, timeStampLabel.frame.size.width, timeStampLabel.frame.size.height)];
+		[storeNameLabel sizeToFit];
+		[storeNameLabel setFrame:CGRectMake(clothingNameLabel.frame.origin.x, clothingNameLabel.frame.origin.y + clothingNameLabel.frame.size.height, storeNameLabel.frame.size.width, storeNameLabel.frame.size.height)];
 
 		[closeButton setFrame:CGRectMake(contentViewArea.width - 30, 0, 30, 30)];
 	
-		[scrollView setFrame:CGRectMake(10, userImageView.frame.origin.y + userImageView.frame.size.height + 10, contentViewArea.width-20, contentViewArea.height - (userImageView.frame.origin.y + userImageView.frame.size.height + 10))];
+		[scrollView setFrame:CGRectMake(10, clothingImageView.frame.origin.y + clothingImageView.frame.size.height + 10, contentViewArea.width-20, contentViewArea.height - (clothingImageView.frame.origin.y + clothingImageView.frame.size.height + 10))];
 
 		///////////////////////////////////////////////////////////////
-		[messageLabel setText:messageModel.content];
-		messageLabel.numberOfLines = 0;
-		[messageLabel sizeToFit];
-		[messageLabel setFrame:CGRectMake(0, 0, scrollView.frame.size.width,messageLabel.frame.size.height)];
+		[descriptionLabel setText:clothingModel.clothing.Description];
+		descriptionLabel.numberOfLines = 0;
+		[descriptionLabel sizeToFit];
+		[descriptionLabel setFrame:CGRectMake(0, 0, scrollView.frame.size.width,descriptionLabel.frame.size.height)];
 
-		[scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, messageLabel.frame.origin.y + messageLabel.frame.size.height)];
+		[scrollView setContentSize:CGSizeMake(scrollView.frame.size.width, descriptionLabel.frame.origin.y + descriptionLabel.frame.size.height)];
 	
 }
 
@@ -157,19 +158,19 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.20];
 	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:nil cache:NO];
-	timeStampLabel.alpha = 1;
+	storeNameLabel.alpha = 1;
 	closeButton.alpha = 1;
-	messageLabel.alpha = 1;
+	descriptionLabel.alpha = 1;
 	[UIView commitAnimations];
 }
 
 
 -(void) dealloc {
 	closeButton=nil;
-	userImageView=nil;
-	userNameLabel=nil;
-	timeStampLabel=nil;
-	messageLabel=nil;
+	clothingImageView=nil;
+	clothingNameLabel=nil;
+	storeNameLabel=nil;
+	descriptionLabel=nil;
 	scrollView=nil;
 	contentView=nil;
 }

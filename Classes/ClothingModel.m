@@ -29,38 +29,18 @@
  
 //
 
-#import "MessageModel.h"
+#import "ClothingModel.h"
 #import "Clothing.h"
 
-@implementation MessageModel
+@implementation ClothingModel
 
-@synthesize messageID;
-@synthesize content;
-@synthesize createdAt;
-@synthesize userName;
-@synthesize userImage;
-
--(id)initWithMessageObject:(NSDictionary*)messageObject 
-{
-	if (self = [super init]) 
-    {
-		self.messageID = (NSInteger)[[messageObject objectForKey:@"id"] intValue];
-		self.content = [messageObject objectForKey:@"content"];
-		self.createdAt = [messageObject objectForKey:@"created_at"];
-		self.userName = [messageObject objectForKey:@"userName"];
-		self.userImage = [messageObject objectForKey:@"userImage"];
-	}
-	return self;
-}
+@synthesize clothing;
 
 -(id)initWithClothing:(Clothing*)clothingItem
 {
     if(self = [super init])
     {
-        self.content = [clothingItem Description];
-        self.userImage = [clothingItem Image];
-        self.userName = [clothingItem Name];
-        self.messageID = [[clothingItem Id] integerValue];
+        self.clothing = clothingItem;
     }
     
     return self;

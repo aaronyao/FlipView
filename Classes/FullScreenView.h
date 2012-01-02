@@ -31,16 +31,16 @@
 
 #import <Foundation/Foundation.h>
 #import "UIViewExtention.h"
-#import "MessageModel.h"
+#import "ClothingModel.h"
 
 @interface FullScreenView : UIViewExtention  {
 	MessageModel* __weak messageModel;
 	UIView* contentView;
 
-	UIImageView* userImageView;
-	UILabel* userNameLabel;
-	UILabel* timeStampLabel;
-	UILabel* messageLabel;
+	UIImageView* clothingImageView;
+	UILabel* clothingNameLabel;
+	UILabel* storeNameLabel;
+	UILabel* descriptionLabel;
 
 	UIViewExtention* __weak viewToOverLap;
 	UIView* __weak fullScreenBG;
@@ -49,10 +49,10 @@
 	UIScrollView* scrollView;
 }
 
--(id)initWithModel:(MessageModel*)model;
+-(id)initWithModel:(ClothingModel*)model;
 -(void)showFields;
 
-@property (nonatomic,weak) MessageModel* messageModel;
+@property (nonatomic,weak) ClothingModel* clothingModel;
 @property (nonatomic,weak) UIViewExtention* viewToOverLap;
 @property (nonatomic,weak) UIView* fullScreenBG;
 @end

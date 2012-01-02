@@ -31,19 +31,20 @@
 
 #import <Foundation/Foundation.h>
 #import "UIViewExtention.h"
-@class MessageModel;
+
+@class ClothingModel;
 
 @interface TitleAndTextView : UIViewExtention {
 	UIView* contentView;
-	UIImageView* userImageView;
-	UILabel* userNameLabel;
-	UILabel* timeStampLabel;
-	UILabel* messageLabel;
+	UIImageView* clothingImageView;
+	UILabel* clothingNameLabel;
+	UILabel* storeNameLabel;
+	UILabel* descriptionLabel;
 }
 
-- (id) initWithMessageModel:(MessageModel*)messagemodel;
+- (id) initWithClothingModel:(ClothingModel*)clothingModel;
 - (void) initializeFields;
 	
-@property (nonatomic,strong) MessageModel* messageModel;
+@property (nonatomic,strong) ClothingModel* clothingModel;
 
 @end
