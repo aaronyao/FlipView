@@ -110,7 +110,6 @@
 	
 	int remainingMessageCount = 0;
 	int totalMessageCount = [messageArray count];
-	int numOfGroup = totalMessageCount /5;
 	
 	remainingMessageCount = totalMessageCount;
 	
@@ -121,6 +120,7 @@
     }
     
     /*
+    int numOfGroup = totalMessageCount /5;
 	for (int i=1; i<=numOfGroup; i++) {
 		
 		remainingMessageCount = totalMessageCount - (i * 5);
@@ -151,29 +151,17 @@
 
   	LayoutViewExtention* layoutToReturn = nil;
 	NSInteger layoutNumber = [[viewControlerStack objectAtIndex:page-1] intValue];
-	
-	int remainingMessageCount = 0;
-	int totalMessageCount = [messageArrayCollection count];
-	int numOfGroup = totalMessageCount /5;
-	remainingMessageCount = totalMessageCount - (numOfGroup * 5);	
-	
+    
+    int count = [[viewControlerStack objectAtIndex:page-1] intValue];
 	int rangeFrom = 0;
-	int rangeTo = 0;
-	BOOL shouldContinue = FALSE;
-	
-	if (page <= numOfGroup) {
-		rangeFrom = (page * 5) -5;
-		rangeTo = 5;
-		shouldContinue = TRUE;
-	}else if (remainingMessageCount > 0) {
-		rangeFrom = [messageArrayCollection count] - remainingMessageCount;
-		rangeTo = remainingMessageCount;
-		shouldContinue = TRUE;
-	}
-	
+	BOOL shouldContinue = TRUE;
+    
+    for(int i=0; i<page-1; i++) {
+        rangeFrom += [[viewControlerStack objectAtIndex:i] intValue];
+    }
 	if (shouldContinue) {
 		
-		NSRange rangeForView = NSMakeRange(rangeFrom, rangeTo);
+		NSRange rangeForView = NSMakeRange(rangeFrom, count);
 		
 		NSArray* messageArray= [messageArrayCollection subarrayWithRange:rangeForView];
 		
