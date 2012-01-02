@@ -79,13 +79,13 @@
 	
 	if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
 		if (view1 != nil) {
-			[view1 setFrame:CGRectMake(0, 50, 768, (954/2) - 10)];			
-			[view2 setFrame:CGRectMake(0,(954/2) + 40, 768, (954/2) - 10)];
+			[view1 setFrame:CGRectMake(0, 40, 768, (984/2))];			
+			[view2 setFrame:CGRectMake(0,(984/2) + 40, 768, 984/2)];
 		}
 	}else {
 		if (view1 != nil) {		
-			[view1 setFrame:CGRectMake(0, 50, (1024 /2), 698 -20)];
-			[view2 setFrame:CGRectMake((1024 /2), 50, (1024 /2), 698 -20)];
+			[view1 setFrame:CGRectMake(0, 40, (1024 /2), 984)];
+			[view2 setFrame:CGRectMake((1024 /2), 40, (1024 /2), 984)];
 		}
 	}
 	

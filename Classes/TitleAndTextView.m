@@ -55,12 +55,13 @@
 	
 	CGSize contentViewArea = CGSizeMake((contentView.frame.size.width - 20), (contentView.frame.size.height-30));
     
-    float ratio = clothingImageView.image.size.height/clothingImageView.image.size.width;
     int width = contentView.frame.size.width;
-    int height = ratio * width;
-	if(height < contentView.frame.size.height) {
-        [contentView setBackgroundColor: [UIColor grayColor]];
-    }
+    int height = contentView.frame.size.height;
+    
+	clothingImageView = [[UIImageView alloc] init];
+	clothingImageView.image = [UIImage imageWithContentsOfFile:[clothingModel.clothing Image:height width:width]];
+	[clothingImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
+	[contentView addSubview:clothingImageView];
     [clothingImageView setFrame:CGRectMake(0, 0, width, height)];
     
     /*
@@ -94,11 +95,6 @@
 	contentView = [[UIView alloc] init];
 	[contentView setBackgroundColor:[UIColor whiteColor]];
 	contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-	clothingImageView = [[UIImageView alloc] init];
-	clothingImageView.image = [UIImage imageWithContentsOfFile:clothingModel.clothing.Image];
-	[clothingImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
-	[contentView addSubview:clothingImageView];
 
 	
 	[self addSubview:contentView];

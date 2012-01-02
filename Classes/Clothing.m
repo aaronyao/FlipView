@@ -44,7 +44,7 @@
     return [JSON objectForKey:@"description"];
 }
 
--(NSString*) Image: (NSString*) height width:(NSString *)width
+-(NSString*) Image: (int) height width:(int) width
 {
     return [Session getImage:[NSString stringWithFormat:@"http://api.clossit.com/api/Thumbnail.aspx?src=%@&width=%@&height=%@", [JSON objectForKey:@"image"], width, height]];
 }

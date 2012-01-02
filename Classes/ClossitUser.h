@@ -22,7 +22,7 @@
 -(NSString*) FirstName;
 -(NSString*) LastName;
 -(NSURL*) Page;
--(NSString*) Image:(NSString*) height width:(NSString*)width;
+-(NSString*) Image:(int) height width:(int)width;
 
 @property (nonatomic, strong) NSDictionary* JSON;
 @property (strong) NSString* imgPath;

@@ -73,11 +73,11 @@
 	
 	if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
 		if (view1 != nil) {
-			[view1 setFrame:CGRectMake(0, 50, 768, 954 - 20)];			
+			[view1 setFrame:CGRectMake(0, 40, 768, 1024-40)];			
 		}
 	}else {
 		if (view1 != nil) {		
-			[view1 setFrame:CGRectMake(0, 50, 1024, 698 -20)];
+			[view1 setFrame:CGRectMake(0, 40, 1024, 768 -40)];
 		}
 	}
 	

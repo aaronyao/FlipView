@@ -61,7 +61,7 @@
     return [NSURL URLWithString:[@"http://www.clossit.com" stringByAppendingString:[JSON objectForKey:@"page"]]]; 
 }
 
--(NSString*)Image: (NSString*) height width:(NSString *)width
+-(NSString*)Image: (int) height width:(int)width
 {
      return [Session getImage:[NSString stringWithFormat:@"http://api.clossit.com/api/Thumbnail.aspx?src=%@&width=%@&height=%@", [JSON objectForKey:@"image"], width, height]];
 }
