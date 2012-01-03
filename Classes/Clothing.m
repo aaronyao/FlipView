@@ -9,6 +9,7 @@
 #import "Clothing.h"
 #import "SBJson.h"
 #import "Session.h"
+#import "UIImageExtras.h"
 
 
 @implementation Clothing
@@ -44,9 +45,10 @@
     return [JSON objectForKey:@"description"];
 }
 
--(NSString*) Image: (int) height width:(int) width
-{
-    return [Session getImage:[NSString stringWithFormat:@"http://api.clossit.com/api/Thumbnail.aspx?src=%@&width=%d&height=%d", [JSON objectForKey:@"image"], width, height]];
+-(UIImage*) Image:(int)width :(int)height {
+    NSString* path = [Session getImage:[JSON objectForKey:@"image"]];
+    UIImage* image = [[UIImage alloc] initWithContentsOfFile:path];
+    return [image resize:CGSizeMake(width, height)];
 }
 
 -(NSString *) Store

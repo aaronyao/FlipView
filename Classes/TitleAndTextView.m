@@ -26,7 +26,7 @@
 //  FlipView
 //
 //  Created by Reefaq Mohammed on 16/07/11.
- 
+
 //
 
 #import "TitleAndTextView.h"
@@ -44,55 +44,54 @@
 		
 		UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
 		[self addGestureRecognizer:tapRecognizer];
-
+        
 	}
 	return self;
 }
 
 - (void)reAdjustLayout{
-
+    
 	[contentView setFrame:CGRectMake(1, 1, self.frame.size.width-2, self.frame.size.height - 2)];
 	
 	CGSize contentViewArea = CGSizeMake((contentView.frame.size.width - 20), (contentView.frame.size.height-30));
     
-    float ratio = clothingImageView.image.size.height/clothingImageView.image.size.width;
     int width = contentView.frame.size.width;
     int height = contentView.frame.size.height;
-	clothingImageView.image = [UIImage imageWithContentsOfFile:[clothingModel.clothing Image:height width:width]];
+	clothingImageView.image = [clothingModel.clothing Image:width :height];
     [clothingImageView setFrame:CGRectMake(0, 0, width, height)];
     
     /*
-    if(height < contentView.frame.size.height) {
-        ratio = userImageView.image.size.height/userImageView.image.size.width;
-        int width = contentView.frame.size.width;
-        [userImageView setFrame:CGRectMake(0, 0, width, contentView.frame.size.height*ratio)];
-    }
-    */
+     if(height < contentView.frame.size.height) {
+     ratio = userImageView.image.size.height/userImageView.image.size.width;
+     int width = contentView.frame.size.width;
+     [userImageView setFrame:CGRectMake(0, 0, width, contentView.frame.size.height*ratio)];
+     }
+     */
 	[clothingNameLabel sizeToFit];
 	[clothingNameLabel setFrame:CGRectMake(clothingImageView.frame.origin.x + clothingImageView.frame.size.width + 10, 5, (contentViewArea.width - (clothingImageView.frame.size.width + 10)), clothingNameLabel.frame.size.height)];
 	[storeNameLabel sizeToFit];
 	[storeNameLabel setFrame:CGRectMake(clothingNameLabel.frame.origin.x, clothingNameLabel.frame.origin.y + clothingNameLabel.frame.size.height, storeNameLabel.frame.size.width, storeNameLabel.frame.size.height)];
-
+    
 	
 	[descriptionLabel setFrame:CGRectMake(clothingImageView.frame.origin.x ,(clothingImageView.frame.origin.y + clothingImageView.frame.size.height), contentViewArea.width, contentViewArea.height - (clothingImageView.frame.origin.y + clothingImageView.frame.size.height))];	
-		
-		
+    
+    
 	[descriptionLabel setText:clothingModel.clothing.Description];
 	descriptionLabel.contentMode = UITextAlignmentLeft;
-		
-//		float widthOffset = (messageLabel.frame.size.width - textSize.width)/ 2;
-//		float heightOffset = (messageLabel.frame.size.height - textSize.height)/2;
-		//[messageLabel setContentInset:UIEdgeInsetsMake(heightOffset, widthOffset, heightOffset, widthOffset)];
-
     
-
+    //		float widthOffset = (messageLabel.frame.size.width - textSize.width)/ 2;
+    //		float heightOffset = (messageLabel.frame.size.height - textSize.height)/2;
+    //[messageLabel setContentInset:UIEdgeInsetsMake(heightOffset, widthOffset, heightOffset, widthOffset)];
+    
+    
+    
 }
 
 - (void) initializeFields {
 	contentView = [[UIView alloc] init];
 	[contentView setBackgroundColor:[UIColor whiteColor]];
-     contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+    contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
 	clothingImageView = [[UIImageView alloc] init];
 	[clothingImageView setFrame:CGRectMake(0, 0, self.frame.size.width, 500)];
 	[contentView addSubview:clothingImageView];
@@ -108,8 +107,8 @@
 
 
 -(void) setFrame:(CGRect)rect {
-		self.originalRect = rect;
-		[super setFrame:rect];
+    self.originalRect = rect;
+    [super setFrame:rect];
 }
 
 

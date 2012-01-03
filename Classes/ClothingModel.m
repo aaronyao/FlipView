@@ -41,6 +41,7 @@
     if(self = [super init])
     {
         self.clothing = clothingItem;
+        [self.clothing Image:10 :10];
     }
     
     return self;

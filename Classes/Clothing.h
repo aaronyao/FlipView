@@ -19,12 +19,11 @@
 - (NSString*) Name;
 - (NSString*) URL;
 - (NSString*) Description;
-- (NSString *) Image: (int)height width:(int)width;
+- (UIImage*) Image: (int)width :(int)height;
 - (NSString*) Id;
 - (NSString*) Store;
 - (NSString*) Gender;
 - (NSString*) dateIndexed;
-- (NSString *) md5:(NSString *) input;
 //- (NSString* ) loadImage:(NSString *) url;
 
 
